@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CallAPI</string>
+    <string name="tvname" />
+    <string name="tvemail">Email:</string>
+    <string name="tvgender">Gender:</string>
+    <string name="tvlocation">Address:</string>
+    <string name="tvphone">Phone:</string>
+    <string name="tvnat">Nat:</string>
 </resources>

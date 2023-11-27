@@ -17,6 +17,7 @@ class MyAdapter(private var dataList: List<User>) : RecyclerView.Adapter<MyAdapt
         private var TV_email: TextView
         private var TV_gender : TextView
         private var TV_location : TextView
+        private var TV_timezone : TextView
         private var TV_phone : TextView
         private var TV_nat : TextView
         private var ImgV_avatar: ImageView
@@ -26,6 +27,7 @@ class MyAdapter(private var dataList: List<User>) : RecyclerView.Adapter<MyAdapt
             TV_email = view.findViewById(R.id.tvEmail)
             TV_gender = view.findViewById(R.id.tvGender)
             TV_location = view.findViewById(R.id.tvLocation)
+            TV_timezone = view.findViewById(R.id.tvTimezone)
             TV_phone = view.findViewById(R.id.tvPhone)
             TV_nat = view.findViewById(R.id.tvNat)
             ImgV_avatar = view.findViewById(R.id.user_picture)
@@ -33,10 +35,11 @@ class MyAdapter(private var dataList: List<User>) : RecyclerView.Adapter<MyAdapt
 
         fun bind(data: User){
             with(data){
-                TV_name.text = name.toString()
+                TV_name.text = itemView.context.getString(R.string.tvname, name.title, name.first, name.last)
                 TV_email.text = itemView.context.getString(R.string.tvemail, email)
                 TV_gender.text = itemView.context.getString(R.string.tvgender, gender)
-                TV_location.text = itemView.context.getString(R.string.tvlocation, location)
+                TV_location.text = itemView.context.getString(R.string.tvlocation, location.street.name, location.city, location.state, location.country)
+                TV_timezone.text = itemView.context.getString(R.string.tvtimezone, location.timezone.offset, location.timezone.description)
                 TV_phone.text = itemView.context.getString(R.string.tvphone, phone)
                 TV_nat.text = itemView.context.getString(R.string.tvnat, nat)
                 // user avatar

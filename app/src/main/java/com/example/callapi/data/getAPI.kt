@@ -21,7 +21,7 @@ object ApiServiceManager  {
 
 interface APIController {
     @GET("/api/?results=20")
-    suspend fun getUsers(): Call<FullData>
+    fun getUsers(): Call<FullData>
 }
 
 

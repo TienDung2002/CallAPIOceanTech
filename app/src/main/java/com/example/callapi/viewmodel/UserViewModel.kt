@@ -17,13 +17,14 @@ import java.io.IOException
 class UserViewModel : ViewModel() {
     private val listData : MutableLiveData<List<User>> = MutableLiveData()
 
-    fun getData(): MutableLiveData<List<User>> {
-        if(listData.value?.isEmpty() == true) {
-            initData()
-        }
+//    fun getData(): MutableLiveData<List<User>> {
+//
+//        return listData
+//    }
+    fun getUsersLiveData(): LiveData<List<User>> {
+        initData()
         return listData
     }
-
     private fun initData() {
         viewModelScope.launch {
             try {
@@ -44,9 +45,7 @@ class UserViewModel : ViewModel() {
             }
         }
     }
-    fun getUsersLiveData(): LiveData<List<User>> {
-        return listData
-    }
+
 
 
 //private fun getUsers(): MutableLiveData<List<User>> {

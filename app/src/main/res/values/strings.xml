@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">CallAPI</string>
+    <string name="tvname">%1$s %2$s %3$s</string>
     <string name="tvemail">Email: %s</string>
     <string name="tvgender">Gender: %s</string>
-    <string name="tvlocation">Address: %s</string>
+    <string name="tvlocation">Address: %s, %s, %s, %s</string>
+    <string name="tvtimezone">Timezone: %s, %s</string>
     <string name="tvphone">Phone: %s</string>
     <string name="tvnat">Nat: %s</string>
 </resources>

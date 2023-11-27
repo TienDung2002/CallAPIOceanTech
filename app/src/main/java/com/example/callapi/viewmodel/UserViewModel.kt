@@ -1,6 +1,7 @@
 package com.example.callapi.viewmodel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -42,6 +43,9 @@ class UserViewModel : ViewModel() {
                 Log.d("error", "Kết nối tới API thất bại")
             }
         }
+    }
+    fun getUsersLiveData(): LiveData<List<User>> {
+        return listData
     }
 
 

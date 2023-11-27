@@ -3,13 +3,14 @@ package com.example.callapi.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.callapi.R
 import com.example.callapi.data.User
-import com.example.callapi.viewmodel.UserViewModel
+import com.squareup.picasso.Picasso
 
-class MyAdapter(private val datalist: List<User>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class MyAdapter(private var dataList: List<User>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private var TV_name: TextView
@@ -18,6 +19,7 @@ class MyAdapter(private val datalist: List<User>) : RecyclerView.Adapter<MyAdapt
         private var TV_location : TextView
         private var TV_phone : TextView
         private var TV_nat : TextView
+        private var ImgV_avatar: ImageView
 
         init {
             TV_name = view.findViewById(R.id.tvName)
@@ -26,16 +28,21 @@ class MyAdapter(private val datalist: List<User>) : RecyclerView.Adapter<MyAdapt
             TV_location = view.findViewById(R.id.tvLocation)
             TV_phone = view.findViewById(R.id.tvPhone)
             TV_nat = view.findViewById(R.id.tvNat)
+            ImgV_avatar = view.findViewById(R.id.user_picture)
         }
 
         fun bind(data: User){
             with(data){
-//                TV_name.text = "${name.title} ${name.first} ${name.last}"
-                TV_name.text = resources.getString()
-                TV_gender.text = "Gender: " + "${gender}"
+                TV_name.text = name.toString()
+                TV_email.text = itemView.context.getString(R.string.tvemail, email)
+                TV_gender.text = itemView.context.getString(R.string.tvgender, gender)
+                TV_location.text = itemView.context.getString(R.string.tvlocation, location)
+                TV_phone.text = itemView.context.getString(R.string.tvphone, phone)
+                TV_nat.text = itemView.context.getString(R.string.tvnat, nat)
+                // user avatar
+                Picasso.get().load(picture.medium).into(ImgV_avatar)
             }
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyAdapter.MyViewHolder {
@@ -44,9 +51,13 @@ class MyAdapter(private val datalist: List<User>) : RecyclerView.Adapter<MyAdapt
     }
 
     override fun onBindViewHolder(holder: MyAdapter.MyViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.bind(dataList[position])
     }
 
-    override fun getItemCount(): Int = datalist.size
+    override fun getItemCount(): Int = dataList.size
 
+    fun setData(newDataList: List<User>) {
+        dataList = newDataList
+        notifyDataSetChanged()
+    }
 }

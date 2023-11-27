@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 app:cardCornerRadius="50dp"
-                android:layout_marginEnd="30dp">
+                android:layout_marginEnd="20dp">
 
                 <ImageView
                     android:id="@+id/user_picture"
@@ -35,15 +35,30 @@
                     android:src="@color/black" />
             </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:id="@+id/tvName"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="Nguyễn Văn A"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/nameColor"/>
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nguyễn Văn A"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/nameColor"/>
+
+                <TextView
+                    android:id="@+id/tvEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="nguyenvanA@gmail.com"
+                    android:textSize="15sp"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -51,14 +66,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tvEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="nguyenvanA@gmail.com"
-                android:textSize="15sp"
-                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/tvGender"
@@ -88,7 +95,7 @@
                 android:id="@+id/tvNat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ABC"
+                android:text="ABCXYZ"
                 android:textSize="15sp"
                 android:textColor="@color/black"/>
         </LinearLayout>

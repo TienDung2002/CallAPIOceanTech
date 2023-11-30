@@ -12,7 +12,6 @@ import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    @Inject
     lateinit var viewModel: MyViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView.adapter = adapter
 
 
-        viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
+        viewModel = ViewModelProvider(this)[MyViewModel::class.java]
         viewModel.getUsersLiveData().observe(this) { userList ->
             adapter.setData(userList)
         }

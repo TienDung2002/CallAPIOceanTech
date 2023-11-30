@@ -51,12 +51,10 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     //dagger
-//    implementation 'com.google.dagger:dagger:2.48.1'
-//    kapt 'com.google.dagger:dagger-compiler:2.48.1'
-//    implementation 'com.google.dagger:dagger-android:2.48.1'
-//    implementation 'com.google.dagger:dagger-android-support:2.48.1'
-//    kapt 'com.google.dagger:dagger-android-processor:2.x'
-
+    implementation 'com.google.dagger:dagger:2.48.1'
+    kapt 'com.google.dagger:dagger-compiler:2.48.1'
+    // cái này để support lib của dagger
+    implementation 'com.google.dagger:dagger-android-support:2.48.1'
     // picasso để xử lí avatar user
     implementation 'com.squareup.picasso:picasso:2.71828'
 }

@@ -5,22 +5,20 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.callapi.data.ApiServiceManager
+import com.example.callapi.data.APIController
 import com.example.callapi.data.FullData
 import com.example.callapi.data.User
+import com.example.callapi.network.NetworkModule
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.IOException
 
-class UserViewModel : ViewModel() {
+class MyViewModel : ViewModel() {
     private val listData : MutableLiveData<List<User>> = MutableLiveData()
+    private lateinit var getAPIUsers : APIController
 
-//    fun getData(): MutableLiveData<List<User>> {
-//
-//        return listData
-//    }
     fun getUsersLiveData(): LiveData<List<User>> {
         initData()
         return listData
@@ -28,7 +26,10 @@ class UserViewModel : ViewModel() {
     private fun initData() {
         viewModelScope.launch {
             try {
-                ApiServiceManager.retrofitService.getUsers().enqueue(object : Callback<FullData> {
+//                ApiServiceManager.retrofitService.getUsers().enqueue(object : Callback<FullData> {
+                getAPIUsers = NetworkModule.provideApiUser(NetworkModule.provideRetroService())
+
+                getAPIUsers.getUsers().enqueue(object : Callback<FullData> {
                     override fun onResponse(call: Call<FullData>, response: Response<FullData>) {
                         if (response.isSuccessful) {
                             listData.value = response.body()?.results
@@ -45,23 +46,4 @@ class UserViewModel : ViewModel() {
             }
         }
     }
-
-
-
-//private fun getUsers(): MutableLiveData<List<User>> {
-//    val data = MutableLiveData<List<User>>()
-//    ApiServiceManager.retrofitService.getUsers().enqueue(object : Callback<FullData> {
-//        override fun onResponse(call: Call<FullData>, response: Response<FullData>) {
-//            if (response.isSuccessful) {
-//                data.value = response.body()?.results
-//                Log.d("onResponse","Lấy dữ liệu thành công")
-//            }
-//        }
-//        override fun onFailure(call: Call<FullData>, t: Throwable) {
-//            Log.d("onFailure","Lấy dữ liệu thất bại")
-//        }
-//    })
-//    Log.d("data return", data.toString())
-//    return data
-//}
 }

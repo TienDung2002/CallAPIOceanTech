@@ -9,6 +9,7 @@ import javax.inject.Singleton
 
 @Module
 object NetworkModule {
+    // 2 module cung cấp dependencies
     @Provides
     @Singleton // đánh dấu rằng hàm dc tạo ra 1 lần trong suốt vòng đời của UD
     fun provideRetroService(): Retrofit{

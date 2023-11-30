@@ -7,5 +7,6 @@ import dagger.Component
 @Component(modules = [NetworkModule::class])
 
 interface AppComponent {
+    // sử dụng hàm này để dagger tìm nơi inject dependency vào
     fun injectActivity(activity: MainActivity)
 }

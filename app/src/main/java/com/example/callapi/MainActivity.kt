@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val appComponent = (application as ExerciseApplication).appComponent
+        // goi injectActivity để dagger inject dependency vào MainActivity
         appComponent.injectActivity(this)
 
 
